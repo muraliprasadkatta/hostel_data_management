@@ -140,11 +140,13 @@ WSGI_APPLICATION = 'hosteldb20.wsgi.application'
 
 # settings.py
 
+import os
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3'), conn_max_age=600, ssl_require=False)
 }
+
 
 
 
