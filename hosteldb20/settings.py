@@ -140,17 +140,12 @@ WSGI_APPLICATION = 'hosteldb20.wsgi.application'
 
 # settings.py
 
+import dj_database_url
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST', 'localhost'),  # Default to localhost
-        'PORT': os.getenv('DATABASE_PORT', '3306'),  # Default to 3306
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
+
 
 
 
